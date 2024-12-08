@@ -44,27 +44,27 @@ jobs:
           application: frontend
           docker_image_tag: kristaps404/webapp-frontend
   
-  # deploy-dev:
-  #   name: Deploy Kubuernetes - DEV
-  #   runs-on: self-hosted
-  #   needs: [build-backend, build-fronted]
-  #   steps:
-  #     - name: Checkout the code
-  #       uses: actions/checkout@v4
-  #     - uses: dorny/paths-filter@v3
-  #       id: filter
-  #       with:
-  #         filters: |
-  #           frontend:
-  #             - 'frontend/**'
-  #           backend:
-  #             - 'backend/**'
-  #     - name: Deploy Frontend
-  #       if: steps.filter.outputs.frontend == 'true'
-  #       run: echo "Deploying frontend"
-  #     - name : Deploy Backend
-  #       if: steps.filter.outputs.backend == 'true'
-  #       run: echo "Deploying backend"
+  deploy-dev:
+    name: Deploy Kubuernetes - DEV
+    runs-on: self-hosted
+    needs: [build-backend, build-fronted]
+    steps:
+      - name: Checkout the code
+        uses: actions/checkout@v4
+      - uses: dorny/paths-filter@v3
+        id: filter
+        with:
+          filters: |
+            frontend:
+              - 'frontend/**'
+            backend:
+              - 'backend/**'
+      - name: Deploy Frontend
+        if: steps.filter.outputs.frontend == 'true'
+        run: echo "Deploying frontend"
+      - name : Deploy Backend
+        if: steps.filter.outputs.backend == 'true'
+        run: echo "Deploying backend"
 
   # deploy-backened-dev:
   #   name: Delploy Backend to Kubernetes DEV
