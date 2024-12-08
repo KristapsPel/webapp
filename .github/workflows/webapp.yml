@@ -14,8 +14,9 @@ jobs:
       - name: Checkout the code
         uses: actions/checkout@v4
       - uses: ./.github/actions/build
-        application: backend
-        docker_image_tag: kristaps404/webapp-backend
+        with:
+          application: backend
+          docker_image_tag: kristaps404/webapp-backend
   build-frontend:
     name: Build Frontend
     runs-on: self-hosted
@@ -23,8 +24,9 @@ jobs:
       - name: Checkout the code
         uses: actions/checkout@v4
       - uses: ./.github/actions/build
-        application: backend
-        docker_image_tag: kristaps404/webapp-frontend
+        with:
+          application: backend
+          docker_image_tag: kristaps404/webapp-frontend
   deploy-backened-dev:
     name: Delploy Backend to Kubernetes DEV
     runs-on: self-hosted
