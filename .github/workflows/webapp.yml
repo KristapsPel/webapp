@@ -74,6 +74,8 @@ jobs:
           deployment_pod_name: backend-dev
           docker_image_tag: kristaps404/webapp-backend:$GITHUB_SH
 
+          
+
   # deploy-backened-dev:
   #   name: Delploy Backend to Kubernetes DEV
   #   runs-on: self-hosted

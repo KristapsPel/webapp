@@ -1,0 +1,15 @@
+name: 'Run API Tests'
+description: '...'
+inputs:
+  test_environment:
+    descrption: '..'
+    required: true
+runs:
+  using: "composite"
+  steps:
+    - name: Pull docker image for API tests
+      run: docker pull kristaps404/api-test-runner
+      shell: cmd
+    - name: Run API tests
+      run: docker run --rm --network=host mtararaujs/api-test-runner cucumber PLATFORM=${{ inputs.test_environment}}
+      shell: cmd
